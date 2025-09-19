@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>One-Click Icebreaker Deck</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1>One-Click Icebreaker Card Deck</h1>
+      <nav class="header-links">
+        <a id="shareLinkHeader" href="#">Share link</a>
+        <a id="printLinkHeader" href="#" onclick="window.print();return false;">Printable view</a>
+      </nav>
+    </header>
+
+    <section class="category-row">
+      <div class="pills" id="pills">
+        <!-- category pills inserted by script -->
+      </div>
+    </section>
+
+    <section class="card-area">
+      <div id="card" class="card" role="status" aria-live="polite">
+        <p id="cardText">Press Next to reveal an icebreaker!</p>
+        <button id="favoriteBtn" class="favorite-btn" aria-label="Favorite this card">☆</button>
+      </div>
+    </section>
+
+    <div class="controls-row">
+      <button id="nextBtn" class="next-btn">Next</button>
+    </div>
+
+    <footer>
+      <small class="tip">Tip: Press Spacebar for the next card • Categories are saved locally</small>
+    </footer>
+  </main>
+
+  <div id="confetti-root" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
