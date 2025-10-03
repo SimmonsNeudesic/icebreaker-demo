@@ -44,6 +44,33 @@ h1{
   font-weight:600;
 }
 
+.color-picker-label{
+  display:inline-flex;
+  align-items:center;
+  margin-left:12px;
+  cursor:pointer;
+}
+
+.color-picker{
+  width:40px;
+  height:40px;
+  border:2px solid rgba(255,255,255,0.3);
+  border-radius:8px;
+  cursor:pointer;
+  background:transparent;
+  transition:border-color 0.2s, transform 0.2s;
+}
+
+.color-picker:hover{
+  border-color:var(--accent);
+  transform:scale(1.05);
+}
+
+.color-picker:focus{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
 .category-row{margin-bottom:18px}
 .pills{display:flex;gap:12px;align-items:center}
 .pill{
