@@ -32,6 +32,7 @@ const printBtn = document.getElementById('printBtn');
 const confettiRoot = document.getElementById('confetti-root');
 
 const favoriteBtn = document.getElementById('favoriteBtn');
+const bgColorPicker = document.getElementById('bgColorPicker');
 
 const CATEGORIES = Object.keys(ICEBREAKERS);
 
@@ -61,6 +62,22 @@ function toggleFavorite(text) {
 function updateFavoriteButton(text) {
   const favs = getFavorites();
   favoriteBtn.textContent = favs.includes(text) ? '★' : '☆';
+}
+
+function loadSavedBackgroundColor() {
+  const savedColor = localStorage.getItem('ib-bg-color');
+  if (savedColor) {
+    document.body.style.background = savedColor;
+    bgColorPicker.value = savedColor;
+  } else {
+    // Set default color from current gradient
+    bgColorPicker.value = '#071026';
+  }
+}
+
+function saveBackgroundColor(color) {
+  localStorage.setItem('ib-bg-color', color);
+  document.body.style.background = color;
 }
 
 function getFromCategory(cat){
@@ -189,12 +206,18 @@ function loadFromURL(){
 // Init
 populateCategories();
 loadFromURL();
+loadSavedBackgroundColor();
 
 nextBtn.addEventListener('click', nextCard);
 favoriteBtn.addEventListener('click', () => toggleFavorite(cardTextEl.textContent));
-shareBtn.addEventListener('click', copyShare);
-printBtn.addEventListener('click', ()=> window.print());
+if(shareBtn) shareBtn.addEventListener('click', copyShare);
+if(printBtn) printBtn.addEventListener('click', ()=> window.print());
 window.addEventListener('keydown', handleKey);
+
+// Background color picker
+bgColorPicker.addEventListener('input', (e) => {
+  saveBackgroundColor(e.target.value);
+});
 
 // Header share link (uses current card text)
 const shareLinkHeader = document.getElementById('shareLinkHeader');
